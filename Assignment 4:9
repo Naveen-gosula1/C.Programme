@@ -1,0 +1,40 @@
+#include <stdio.h>
+
+int countStudents(int);
+int countTotalUsers(int, int);
+void getStaffUsers(int, int, int*, int*);
+
+int main() {
+    int numStudents, numStaff, numNonTeachingStaff;
+    printf("Enter the number of student users: ");
+    scanf("%d", &numStudents);
+    printf("Enter the number of staff users: ");
+    scanf("%d", &numStaff);
+    printf("\n");
+
+    int totalUsers = countTotalUsers(numStudents, numStaff);
+    printf("Total number of users in the college: %d\n", totalUsers);
+    printf("Number of student users: %d\n", numStudents);
+    printf("Number of staff users: %d\n", numStaff);
+    printf("\n");
+
+    getStaffUsers(numStaff, numNonTeachingStaff, &numStaff, &numNonTeachingStaff);
+    printf("Number of Non-Teaching Staff users: %d\n", numNonTeachingStaff);
+    printf("Number of Teaching Staff users: %d\n", numStaff - numNonTeachingStaff);
+    printf("\n");
+
+    return 0;
+}
+
+int countStudents(int numStudents) {
+    return numStudents;
+}
+
+int countTotalUsers(int numStudents, int numStaff) {
+    return numStudents + numStaff;
+}
+
+void getStaffUsers(int numStaff, int numNonTeachingStaff, int* staffUsers, int* nonTeachingStaffUsers) {
+    *staffUsers = numStaff;
+    *nonTeachingStaffUsers = numStaff / 3;
+}
