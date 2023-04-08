@@ -1,0 +1,101 @@
+#include <stdio.h>
+#include <string.h>
+
+struct Book {
+    char title[50];
+    char author[50];
+    int year;
+};
+
+struct Book library[100];
+int count = 0;
+
+void addBook() {
+    printf("Enter book details:\n");
+
+    printf("Title: ");
+    scanf("%s", library[count].title);
+
+    printf("Author: ");
+    scanf("%s", library[count].author);
+
+    printf("Year of publication: ");
+    scanf("%d", &library[count].year);
+
+    count++;
+
+    printf("Book added successfully.\n");
+}
+
+void displayBooks() {
+    int i;
+
+    printf("List of books in library:\n");
+
+    for (i = 0; i < count; i++) {
+        printf("%s, by %s (%d)\n", library[i].title, library[i].author, library[i].year);
+    }
+}
+
+void listBooksByAuthor() {
+    char author[50];
+    int i, found = 0;
+
+    printf("Enter author name: ");
+    scanf("%s", author);
+
+    printf("List of books by %s:\n", author);
+
+    for (i = 0; i < count; i++) {
+        if (strcmp(library[i].author, author) == 0) {
+            printf("%s (%d)\n", library[i].title, library[i].year);
+            found = 1;
+        }
+    }
+
+    if (!found) {
+        printf("No books by %s found.\n", author);
+    }
+}
+
+void listBookCount() {
+    printf("Total number of books in library: %d\n", count);
+}
+
+int main() {
+    int choice;
+
+    do {
+        printf("\nMenu:\n");
+        printf("1. Add book details\n");
+        printf("2. Display book details\n");
+        printf("3. List all books of given author\n");
+        printf("4. List the count of books in the library\n");
+        printf("5. Exit\n");
+
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1:
+                addBook();
+                break;
+            case 2:
+                displayBooks();
+                break;
+            case 3:
+                listBooksByAuthor();
+                break;
+            case 4:
+                listBookCount();
+                break;
+            case 5:
+                printf("Exiting program.\n");
+                break;
+            default:
+                printf("Invalid choice. Please try again.\n");
+        }
+    } while (choice != 5);
+
+    return 0;
+}
