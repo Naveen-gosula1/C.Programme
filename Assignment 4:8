@@ -1,0 +1,38 @@
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+    int choice, x, n;
+    printf("Enter the value of x: ");
+    scanf("%d", &x);
+    printf("Enter the value of n: ");
+    scanf("%d", &n);
+    printf("Enter your choice:\n");
+    printf("1. Power of x to n\n");
+    printf("2. Addition of x and n\n");
+    printf("3. Subtraction of x and n\n");
+    printf("4. Multiplication of x and n\n");
+    printf("5. Division of x and n\n");
+    scanf("%d", &choice);
+    switch(choice) {
+        case 1:
+            printf("%d to the power of %d is %lf\n", x, n, pow(x, n));
+            break;
+        case 2:
+            printf("The sum of %d and %d is %d\n", x, n, x + n);
+            break;
+        case 3:
+            printf("The difference between %d and %d is %d\n", x, n, x - n);
+            break;
+        case 4:
+            printf("The product of %d and %d is %d\n", x, n, x * n);
+            break;
+        case 5:
+            printf("The quotient of %d and %d is %d\n", x, n, x / n);
+            break;
+        default:
+            printf("Invalid choice\n");
+            break;
+    }
+    return 0;
+}
