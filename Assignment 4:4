@@ -1,0 +1,27 @@
+#include <stdio.h>
+
+void generatePythagoreanTriples(int limit) {
+    int a, b, c;
+
+    for (a = 1; a <= limit; a++) {
+        for (b = a+1; b <= limit; b++) {
+            for (c = b+1; c <= limit; c++) {
+                if (a*a + b*b == c*c) {
+                    printf("%d, %d, %d\n", a, b, c);
+                }
+            }
+        }
+    }
+}
+
+int main() {
+    int limit;
+
+    printf("Enter the limit for Pythagorean triples: ");
+    scanf("%d", &limit);
+
+    printf("Pythagorean triples with values smaller than %d:\n", limit);
+    generatePythagoreanTriples(limit);
+
+    return 0;
+}
