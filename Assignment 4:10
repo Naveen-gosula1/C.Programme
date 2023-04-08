@@ -1,0 +1,27 @@
+#include <stdio.h>
+
+float calculateSimpleInterest(float, float, char);
+
+int main() {
+    float principalAmount, timePeriod, interestAmount;
+    char customerType;
+
+    printf("Enter the principal amount: ");
+    scanf("%f", &principalAmount);
+    printf("Enter the time period (in years): ");
+    scanf("%f", &timePeriod);
+    printf("Enter the customer type (S for Senior Citizen, O for Others): ");
+    scanf(" %c", &customerType);
+
+    interestAmount = calculateSimpleInterest(principalAmount, timePeriod, customerType);
+
+    printf("Interest Amount: %.2f\n", interestAmount);
+
+    return 0;
+}
+
+float calculateSimpleInterest(float principalAmount, float timePeriod, char customerType) {
+    float rateOfInterest = (customerType == 'S') ? 12 : 10; // 12% for senior citizens, 10% for others
+    float interestAmount = (principalAmount * rateOfInterest * timePeriod) / 100;
+    return interestAmount;
+}
